@@ -9,8 +9,23 @@
   color: #545454;
 }
 
+@media screen and (max-width: 950px) {
+  .footer__copyright {
+    padding-left: 27.5px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .footer__copyright {
+    padding-left: 0;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .footer__copyright {
+    padding-left: 19px;
     font-size: 14px;
     line-height: 17px;
   }

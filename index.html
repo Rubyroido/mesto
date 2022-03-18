@@ -30,42 +30,42 @@
       <section class="places">
         <ul class="table">
           <li class="table__cell">
-            <img src="./images/karachaevsk.jpg" class="table__photo">
+            <img src="./images/karachaevsk.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo_description">
               <p class="table__photo_name">Карачаевск</p>
               <button class="table__button_like"></button>
             </div>
           </li>
           <li class="table__cell">
-            <img src="./images/elbrus.jpg" class="table__photo">
+            <img src="./images/elbrus.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo_description">
               <p class="table__photo_name">Гора Эльбрус</p>
               <button class="table__button_like"></button>
             </div>
           </li>
           <li class="table__cell">
-            <img src="./images/dombai.jpg" class="table__photo">
+            <img src="./images/dombai.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo_description">
               <p class="table__photo_name">Домбай</p>
               <button class="table__button_like"></button>
             </div>
           </li>
           <li class="table__cell">
-            <img src="./images/kiruna.jpg" class="table__photo">
+            <img src="./images/kiruna.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo_description">
               <p class="table__photo_name">Кируна</p>
               <button class="table__button_like"></button>
             </div>
           </li>
           <li class="table__cell">
-            <img src="./images/minnesota.jpg" class="table__photo">
+            <img src="./images/minnesota.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo_description">
               <p class="table__photo_name">Миннесота</p>
               <button class="table__button_like"></button>
             </div>
           </li>
           <li class="table__cell">
-            <img src="./images/yosemite.jpg" class="table__photo">
+            <img src="./images/yosemite.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo_description">
               <p class="table__photo_name">Йосемити</p>
               <button class="table__button_like"></button>
@@ -73,12 +73,21 @@
           </li>
         </ul>
       </section>
-
       <footer class="footer">
         <p class="footer__copyright">&copy;2020. Mesto Russia</p>
       </footer>
     </div>
+    <section class="popup">
+      <form class="popup__container">
+        <h3 class="popup__container_name">Редактировать профиль</h3>
+        <button class="popup__button_close"></button>
+        <input type="text" class="popup__user_name" placeholder="Имя" value="Жак-Ив Кусто">
+        <input type="text" class="popup__user_description" placeholder="О себе" value="Исследователь океана">
+        <button class="popup__button_save">Сохранить</button>
+      </form>
+    </section>
   </div>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>

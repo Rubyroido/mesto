@@ -6,8 +6,12 @@
 
 @media screen and (max-width: 950px) {
   .footer {
-    margin-left: 19px;
+    margin-bottom: 45px;
   }
 }
 
-
+@media screen and (max-width: 650px) {
+  .footer {
+    margin-bottom: 30px;
+  }
+}
