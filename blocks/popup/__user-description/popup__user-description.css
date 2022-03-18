@@ -1,4 +1,4 @@
-.popup__user_description {
+.popup__user-description {
   width: 84%;
   height: 27px;
   margin: 0 0 48px 0;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  .popup__user_description {
+  .popup__user-description {
     margin-bottom: 45px;
   }
 }
