@@ -6,11 +6,13 @@ let userDescription = profile.querySelector('.profile__description');
 let popup = document.querySelector('.popup');
 let popupContainer = popup.querySelector('.popup__container');
 let buttonClose = popup.querySelector('.popup__button-close');
-let nameInput = popup.querySelector('.popup__user-name');
-let jobInput = popup.querySelector('.popup__user-description');
+let nameInput = popup.querySelector('.field_type_name');
+let jobInput = popup.querySelector('.field_type_description');
 
 function popupOpen () {
   popup.classList.add('popup_opened');
+  userName.textContent = nameInput.value;
+  userDescription.textContent = jobInput.value;
 }
 
 function popupClose () {

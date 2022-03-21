@@ -10,21 +10,21 @@
 
 <body class="body">
   <div class="page">
-    <div class="main">
-      <header class="header">
-        <img src="./images/logo.svg" alt="логотип, место" class="header__logo">
-      </header>
+    <header class="header">
+      <img src="./images/logo.svg" alt="логотип, место" class="header__logo">
+    </header>
 
+    <div class="main">
       <section class="profile">
         <div class="profile__card">
           <img src="./images/avatar.jpg" alt="фотография пользователя" class="profile__avatar">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__button-edit"></button>
-            <h2 class="profile__description">Исследователь океана</h2>
+            <button type="button" class="profile__button-edit"></button>
+            <p class="profile__description">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__button-add"></button>
+        <button type="button" class="profile__button-add"></button>
       </section>
 
       <section class="places">
@@ -32,60 +32,63 @@
           <li class="table__cell">
             <img src="./images/karachaevsk.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo-description">
-              <p class="table__photo-name">Карачаевск</p>
-              <button class="table__button-like"></button>
+              <h3 class="table__photo-name">Карачаевск</h3>
+              <button type="button" class="table__button-like"></button>
             </div>
           </li>
           <li class="table__cell">
             <img src="./images/elbrus.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo-description">
-              <p class="table__photo-name">Гора Эльбрус</p>
-              <button class="table__button-like"></button>
+              <h3 class="table__photo-name">Гора Эльбрус</h3>
+              <button type="button" class="table__button-like"></button>
             </div>
           </li>
           <li class="table__cell">
             <img src="./images/dombai.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo-description">
-              <p class="table__photo-name">Домбай</p>
-              <button class="table__button-like"></button>
+              <h3 class="table__photo-name">Домбай</h3>
+              <button type="button" class="table__button-like"></button>
             </div>
           </li>
           <li class="table__cell">
             <img src="./images/kiruna.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo-description">
-              <p class="table__photo-name">Кируна</p>
-              <button class="table__button-like"></button>
+              <h3 class="table__photo-name">Кируна</h3>
+              <button type="button" class="table__button-like"></button>
             </div>
           </li>
           <li class="table__cell">
             <img src="./images/minnesota.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo-description">
-              <p class="table__photo-name">Миннесота</p>
-              <button class="table__button-like"></button>
+              <h3 class="table__photo-name">Миннесота</h3>
+              <button type="button" class="table__button-like"></button>
             </div>
           </li>
           <li class="table__cell">
             <img src="./images/yosemite.jpg" alt="фотография пользователя" class="table__photo">
             <div class="table__photo-description">
-              <p class="table__photo-name">Йосемити</p>
-              <button class="table__button-like"></button>
+              <h3 class="table__photo-name">Йосемити</h3>
+              <button type="button" class="table__button-like"></button>
             </div>
           </li>
         </ul>
       </section>
-      <footer class="footer">
-        <p class="footer__copyright">&copy;2020. Mesto Russia</p>
-      </footer>
     </div>
-    <section class="popup">
-      <form class="popup__container">
-        <h3 class="popup__container-name">Редактировать профиль</h3>
-        <button class="popup__button-close"></button>
-        <input type="text" class="popup__user-name" placeholder="Имя" value="Жак-Ив Кусто">
-        <input type="text" class="popup__user-description" placeholder="О себе" value="Исследователь океана">
-        <button class="popup__button-save">Сохранить</button>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy;2020. Mesto Russia</p>
+    </footer>
+
+    <div class="popup">
+      <form name="popup-form" class="popup__container">
+        <h2 class="popup__container-name">Редактировать профиль</h2>
+        <button type="reset" class="popup__button-close"></button>
+        <input type="text" name="user-name" class="popup__field field_type_name" placeholder="Имя" value="Жак-Ив Кусто">
+        <input type="text" name="user-description" class="popup__field field_type_description" placeholder="О себе"
+          value="Исследователь океана">
+        <button type="submit" class="popup__button-save">Сохранить</button>
       </form>
-    </section>
+    </div>
   </div>
   <script src="./scripts/index.js"></script>
 </body>
