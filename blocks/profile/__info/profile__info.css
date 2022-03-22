@@ -7,6 +7,7 @@
 
 @media screen and (max-width: 650px){
   .profile__info {
+    grid-template-columns: 18px auto 18px;
     justify-content: center;
     gap: 10px;
   }

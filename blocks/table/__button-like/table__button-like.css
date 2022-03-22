@@ -5,6 +5,7 @@
   border: none;
   background-color: white;
   transition: opacity 0.5s linear 0s;
+  padding: 0;
 }
 
 .table__button-like:hover {

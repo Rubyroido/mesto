@@ -10,13 +10,14 @@ let nameInput = popup.querySelector('.popup__field_type_name');
 let jobInput = popup.querySelector('.popup__field_type_description');
 
 function popupOpen () {
+  nameInput.value = userName.textContent;
+  jobInput.value = userDescription.textContent;
   popup.classList.add('popup_opened');
-  userName.textContent = nameInput.value;
-  userDescription.textContent = jobInput.value;
 }
 
 function popupClose () {
   popup.classList.remove('popup_opened');
+
 }
 
 buttonEdit.addEventListener('click', popupOpen);
@@ -25,13 +26,9 @@ buttonClose.addEventListener('click', popupClose);
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
-  nameInput.getAttribute('value');
-  jobInput.getAttribute('value');
   userName.textContent = nameInput.value;
   userDescription.textContent = jobInput.value;
+  popupClose();
 }
 
 popupContainer.addEventListener('submit', formSubmitHandler);
-popupContainer.addEventListener('submit', popupClose);
-
-
