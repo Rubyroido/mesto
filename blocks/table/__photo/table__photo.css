@@ -1,6 +1,7 @@
 .table__photo {
   width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0px 0px;
+  max-height: 282px;
   display: block;
+  margin: 0;
+  padding: 0;
 }
