@@ -1,6 +1,7 @@
 .table__photo {
   width: 282px;
-  max-height: 282px;
+  height: 282px;
+  object-fit: fill;
   display: block;
   margin: 0;
   padding: 0;

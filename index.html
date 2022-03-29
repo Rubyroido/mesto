@@ -28,50 +28,7 @@
       </section>
 
       <section class="places">
-        <ul class="table">
-          <li class="table__cell">
-            <img src="./images/karachaevsk.jpg" alt="фотография пользователя" class="table__photo">
-            <div class="table__photo-description">
-              <h2 class="table__photo-name">Карачаевск</h2>
-              <button type="button" class="table__button-like"></button>
-            </div>
-          </li>
-          <li class="table__cell">
-            <img src="./images/elbrus.jpg" alt="фотография пользователя" class="table__photo">
-            <div class="table__photo-description">
-              <h2 class="table__photo-name">Гора Эльбрус</h2>
-              <button type="button" class="table__button-like"></button>
-            </div>
-          </li>
-          <li class="table__cell">
-            <img src="./images/dombai.jpg" alt="фотография пользователя" class="table__photo">
-            <div class="table__photo-description">
-              <h2 class="table__photo-name">Домбай</h2>
-              <button type="button" class="table__button-like"></button>
-            </div>
-          </li>
-          <li class="table__cell">
-            <img src="./images/kiruna.jpg" alt="фотография пользователя" class="table__photo">
-            <div class="table__photo-description">
-              <h2 class="table__photo-name">Кируна</h2>
-              <button type="button" class="table__button-like"></button>
-            </div>
-          </li>
-          <li class="table__cell">
-            <img src="./images/minnesota.jpg" alt="фотография пользователя" class="table__photo">
-            <div class="table__photo-description">
-              <h2 class="table__photo-name">Миннесота</h2>
-              <button type="button" class="table__button-like"></button>
-            </div>
-          </li>
-          <li class="table__cell">
-            <img src="./images/yosemite.jpg" alt="фотография пользователя" class="table__photo">
-            <div class="table__photo-description">
-              <h2 class="table__photo-name">Йосемити</h2>
-              <button type="button" class="table__button-like"></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="table"></ul>
       </section>
     </main>
 
@@ -83,12 +40,42 @@
       <form name="popup-form" class="popup__container">
         <h2 class="popup__container-name">Редактировать профиль</h2>
         <button type="button" class="popup__button-close"></button>
-        <input type="text" name="user-name" class="popup__field popup__field_type_name" placeholder="Имя" value="Жак-Ив Кусто">
-        <input type="text" name="user-description" class="popup__field popup__field_type_description" placeholder="О себе"
-          value="Исследователь океана">
+        <input type="text" name="user-name" class="popup__field popup__field_type_name" placeholder="Имя"
+          value="Жак-Ив Кусто">
+        <input type="text" name="user-description" class="popup__field popup__field_type_description"
+          placeholder="О себе" value="Исследователь океана">
         <button type="submit" class="popup__button-save">Сохранить</button>
       </form>
     </div>
+
+    <div class="popup">
+      <form name="popup-add-photo" class="popup__container ">
+        <h2 class="popup__container-name">Новое место</h2>
+        <button type="reset" class="popup__button-close"></button>
+        <input type="text" name="photo-name" class="popup__field" placeholder="Название">
+        <input type="url" name="photo-url" class="popup__field" placeholder="Ссылка на картинку">
+        <button type="submit" class="popup__button-save popup__button-save_type-photo">Создать</button>
+      </form>
+    </div>
+
+    <div class="popup">
+      <div class="popup__photo-container">
+        <img src="#" alt="фотография"  class="popup__photo">
+        <p class="popup__photo-name"></p>
+        <button type="button" class="popup__button-close"></button>
+      </div>
+    </div>
+
+    <template id="place-template">
+      <li class="table__cell">
+        <img src="#" alt="фотография пользователя" class="table__photo">
+        <div class="table__photo-description">
+          <h2 class="table__photo-name"></h2>
+          <button type="button" class="table__button-like"></button>
+        </div>
+        <button type="button" class="table__button-delete"></button>
+      </li>
+    </template>
   </div>
   <script src="./scripts/index.js"></script>
 </body>
