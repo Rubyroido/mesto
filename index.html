@@ -37,30 +37,34 @@
     </footer>
 
     <div class="popup popup_type_form-user">
-      <form name="popup-form" class="popup__container">
+      <form name="popup-form" class="popup__container" novalidate>
         <h2 class="popup__container-name">Редактировать профиль</h2>
         <button type="button" class="popup__button-close popup__button-close_type-user"></button>
-        <input type="text" name="user-name" class="popup__field popup__field_type_name" placeholder="Имя"
-          value="Жак-Ив Кусто">
-        <input type="text" name="user-description" class="popup__field popup__field_type_description"
-          placeholder="О себе" value="Исследователь океана">
+        <input id="user-name" type="text" name="user-name" class="popup__field popup__field_type_name" placeholder="Имя"
+          value="Жак-Ив Кусто" required minlength="2" maxlength="40">
+        <span id="user-name-error" class="popup__error"></span>
+        <input id="user-description" type="text" name="user-description" class="popup__field popup__field_type_description"
+          placeholder="О себе" value="Исследователь океана" required minlength="2" maxlength="200">
+        <span id="user-description-error" class="popup__error"></span>
         <button type="submit" class="popup__button-save">Сохранить</button>
       </form>
     </div>
 
     <div class="popup popup_type_form-photo">
-      <form name="popup-add-photo" class="popup__container ">
+      <form name="popup-add-photo" class="popup__container" novalidate>
         <h2 class="popup__container-name">Новое место</h2>
         <button type="reset" class="popup__button-close popup__button-close_type-photo-add"></button>
-        <input type="text" name="photo-name" class="popup__field" placeholder="Название">
-        <input type="url" name="photo-url" class="popup__field" placeholder="Ссылка на картинку">
+        <input id="photo-name" type="text" name="photo-name" class="popup__field" placeholder="Название" required minlength="2" maxlength="30">
+        <span id="photo-name-error" class="popup__error"></span>
+        <input id="photo-url" type="url" name="photo-url" class="popup__field" placeholder="Ссылка на картинку" required>
+        <span id="photo-url-error" class="popup__error"></span>
         <button type="submit" class="popup__button-save popup__button-save_type-photo">Создать</button>
       </form>
     </div>
 
     <div class="popup popup_type_photo">
       <div class="popup__photo-container">
-        <img src="#" alt="фотография"  class="popup__photo">
+        <img src="#" alt="фотография" class="popup__photo">
         <p class="popup__photo-name"></p>
         <button type="button" class="popup__button-close popup__button-close_type-photo-card"></button>
       </div>
@@ -78,6 +82,7 @@
     </template>
   </div>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
