@@ -137,10 +137,10 @@ function createPlace(name, link) {
   place.querySelector('.table__photo-name').textContent = name;
 
   placePhoto.addEventListener('click', () => {
-    openPopup(popupOpenPhoto);
     popupPhoto.src = link;
     popupPhoto.alt = `Фотография ${name}`;
     popupPhotoName.textContent = name;
+    openPopup(popupOpenPhoto);
   });
 
   popupOpenPhotoClose.addEventListener('click', () => {
@@ -180,9 +180,9 @@ const addPlace = (evt) => {
   const name = photoNameInput.value;
   const link = photoUrlInput.value;
   renderPlace(name, link);
+  closePopup(popupAddPhoto);
   photoNameInput.value = '';
   photoUrlInput.value = '';
-  closePopup(popupAddPhoto);
 };
 
 const places = initialCards.map(function (item) {
