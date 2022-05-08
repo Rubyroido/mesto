@@ -55,6 +55,24 @@ const initialCards = [
   }
 ];
 
+const formValidatorObject = {
+  formSelector: '.popup__container',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_inactive',
+  inputErrorClass: 'popup__field_invalid',
+  errorClass: 'popup__error_visible'
+}
+
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
+
+const formUserValidator = new FormValidator(formValidatorObject, formUser);
+const formAddPhotoValidator = new FormValidator(formValidatorObject, formAddPhoto);
+formUserValidator.enableValidation();
+formAddPhotoValidator.enableValidation();
+
+
 function closeByEsc(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
@@ -75,17 +93,27 @@ function closePopup(popup) {
 buttonEdit.addEventListener('click', function () {
   nameInput.value = userName.textContent;
   jobInput.value = userDescription.textContent;
+  // const inputList = Array.from(formUser.querySelectorAll('.popup__field'));
+  // inputList.forEach((input) => {
+  //   hideError(formUser, input, { inputErrorClass: 'popup__field_invalid', errorClass: 'popup__error_visible' });
+  // });
+  // toggleButtonState(inputList, formUserSubmit, 'popup__button-save_inactive');
   const inputList = Array.from(formUser.querySelectorAll('.popup__field'));
   inputList.forEach((input) => {
-    hideError(formUser, input, { inputErrorClass: 'popup__field_invalid', errorClass: 'popup__error_visible' });
+    input.classList.remove('popup__field_invalid');
   });
-  toggleButtonState(inputList, formUserSubmit, 'popup__button-save_inactive');
+  const errors = Array.from(formUser.querySelectorAll('.popup__error'));
+  errors.forEach((error) => {
+    error.textContent = '';
+  })
+  formUserSubmit.classList.remove('popup__button-save_inactive');
   openPopup(popupFormUser);
 });
 
 buttonAdd.addEventListener('click', function () {
-  const inputList = Array.from(formAddPhoto.querySelectorAll('.popup__field'));
-  toggleButtonState(inputList, popupAddPhotoSubmit, 'popup__button-save_inactive');
+  // const inputList = Array.from(formAddPhoto.querySelectorAll('.popup__field'));
+  // toggleButtonState(inputList, popupAddPhotoSubmit, 'popup__button-save_inactive');
+  popupAddPhotoSubmit.classList.add('popup__button-save_inactive');
   openPopup(popupAddPhoto);
 });
 
@@ -108,35 +136,45 @@ function formSubmitHandler(evt) {
 
 popupFormUser.addEventListener('submit', formSubmitHandler);
 
-function createPlace(name, link) {
-  const place = placeTemplate.content.querySelector('.table__cell').cloneNode(true);
-  const placePhoto = place.querySelector('.table__photo');
-  placePhoto.src = link;
-  placePhoto.alt = `Фотография ${name}`;
-  place.querySelector('.table__photo-name').textContent = name;
-
-  placePhoto.addEventListener('click', () => {
-    popupPhoto.src = link;
-    popupPhoto.alt = `Фотография ${name}`;
-    popupPhotoName.textContent = name;
-    openPopup(popupOpenPhoto);
-  });
-
-  const buttonLike = place.querySelector('.table__button-like');
-  buttonLike.addEventListener('click', () => {
-    buttonLike.classList.add('button-like_active');
-  });
-
-  place.querySelector('.table__button-delete').addEventListener('click', () => {
-    place.remove();
-  });
-
-  return (place);
+export function openPhotoPopup(name, link) {
+  popupPhoto.src = link;
+  popupPhoto.alt = `Фотография ${name}`;
+  popupPhotoName.textContent = name;
+  openPopup(popupOpenPhoto);
 }
 
+// function createPlace(name, link) {
+//   const place = placeTemplate.content.querySelector('.table__cell').cloneNode(true);
+//   const placePhoto = place.querySelector('.table__photo');
+//   placePhoto.src = link;
+//   placePhoto.alt = `Фотография ${name}`;
+//   place.querySelector('.table__photo-name').textContent = name;
+
+//   placePhoto.addEventListener('click', () => {
+//     openPhotoPopup(name, link);
+//   });
+
+//   const buttonLike = place.querySelector('.table__button-like');
+//   buttonLike.addEventListener('click', () => {
+//     buttonLike.classList.add('button-like_active');
+//   });
+
+//   place.querySelector('.table__button-delete').addEventListener('click', () => {
+//     place.remove();
+//   });
+
+//   return (place);
+// }
+
+// const renderPlace = (name, link) => {
+//   table.prepend(createPlace(name, link));
+// };
+
 const renderPlace = (name, link) => {
-  table.prepend(createPlace(name, link));
-};
+  const card = new Card(name, link, '#place-template');
+  const cardElement = card.generateCard();
+  table.prepend(cardElement);
+}
 
 const addPlace = (evt) => {
   evt.preventDefault();
@@ -148,9 +186,15 @@ const addPlace = (evt) => {
   photoUrlInput.value = '';
 };
 
-const places = initialCards.map(function (item) {
-  return createPlace(item.name, item.link);
-});
+// const places = initialCards.map(function (item) {
+//   return createPlace(item.name, item.link);
+// });
 
-table.append(...places);
+const places = initialCards.map((item) => {
+  const card = new Card(item.name, item.link, '#place-template');
+  const cardElement = card.generateCard();
+  table.append(cardElement);
+})
+
+// table.append(...places);
 popupAddPhoto.addEventListener('submit', addPlace);
