@@ -90,22 +90,16 @@ function closePopup(popup) {
   document.removeEventListener('keydown', closeByEsc);
 };
 
-buttonEdit.addEventListener('click', function () {
+buttonEdit.addEventListener('click', () => {
   nameInput.value = userName.textContent;
   jobInput.value = userDescription.textContent;
-  const inputList = Array.from(formUser.querySelectorAll('.popup__field'));
-  inputList.forEach((input) => {
-    formUserValidator.hideError(input);
-  })
+  formUserValidator.clearErrors();
   formUserValidator.enableSubmitButton();
   openPopup(popupFormUser);
 });
 
 buttonAdd.addEventListener('click', () => {
-  const inputList = Array.from(formAddPhoto.querySelectorAll('.popup__field'));
-  inputList.forEach((input) => {
-    formAddPhotoValidator.hideError(input);
-  })
+  formAddPhotoValidator.clearErrors();
   formAddPhotoValidator.disableSubmitButton();
   openPopup(popupAddPhoto);
 });
@@ -146,12 +140,11 @@ const addPlace = (evt) => {
   const link = photoUrlInput.value;
   renderPlace(name, link);
   closePopup(popupAddPhoto);
-  photoNameInput.value = '';
-  photoUrlInput.value = '';
+  formAddPhoto.reset();
 };
 
 
-const places = initialCards.map((item) => {
+const places = initialCards.forEach((item) => {
   renderPlace(item.name, item.link);
 })
 

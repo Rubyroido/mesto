@@ -13,7 +13,7 @@ export class FormValidator {
     errorElement.classList.add(this._object.errorClass);
   }
 
-  hideError(inputElement) {
+  _hideError(inputElement) {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._object.inputErrorClass);
     errorElement.classList.remove(this._object.errorClass);
@@ -24,7 +24,7 @@ export class FormValidator {
     if (!inputElement.validity.valid) {
       this._showError(inputElement, inputElement.validationMessage);
     } else {
-      this.hideError(inputElement);
+      this._hideError(inputElement);
     }
   }
 
@@ -50,6 +50,12 @@ export class FormValidator {
     } else {
       this.enableSubmitButton();
     };
+  }
+
+  clearErrors() {
+    this._inputList.forEach((input) => {
+      this._hideError(input);
+    })
   }
 
   _setEventListeners() {
