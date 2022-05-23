@@ -1,20 +1,14 @@
-import {openPhotoPopup} from './index.js';
-
-export class Card {
-  constructor(name, link, cardSelector) {
+export default class Card {
+  constructor(name, link, cardSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
-    this._openPhotoPopup = openPhotoPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
     const place = document.querySelector(this._cardSelector).content.querySelector('.table__cell').cloneNode(true);
     return place;
-  }
-
-  _openPopup(name, link) {
-    openPhotoPopup(name, link);
   }
 
   _photoLike() {
@@ -27,7 +21,7 @@ export class Card {
 
   _setEventListeners() {
     this._element.querySelector('.table__photo').addEventListener('click', () => {
-      this._openPopup(this._name, this._link);
+      this._handleCardClick(this._name, this._link);
     });
     this._element.querySelector('.table__button-like').addEventListener('click', () => {
       this._photoLike();
