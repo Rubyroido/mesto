@@ -2,17 +2,11 @@ import './index.css';
 
 import {
   buttonEdit,
-  userName,
-  userDescription,
   buttonAdd,
-  popupFormUser,
   formUser,
   nameInput,
   jobInput,
-  popupAddPhoto,
-  formAddPhoto,
-  popupOpenPhoto,
-  table
+  formAddPhoto
 } from '../utils/constants.js';
 
 import initialCards from '../utils/InitialCards.js';
@@ -30,7 +24,7 @@ const formAddPhotoValidator = new FormValidator(formValidatorObject, formAddPhot
 formUserValidator.enableValidation();
 formAddPhotoValidator.enableValidation();
 
-const popupWithPhoto = new PopupWithImage(popupOpenPhoto);
+const popupWithPhoto = new PopupWithImage('.popup_type_photo');
 popupWithPhoto.setEventListeners();
 
 function handleCardClick(name, link) {
@@ -48,13 +42,13 @@ const cardsSection = new Section({
   renderer: (item) => {
     cardsSection.addItem(renderPlace(item))
   }
-}, table);
+}, '.table');
 cardsSection.renderItems();
 
-const userInfo = new UserInfo({ userNameSelector: userName, userDescriptionSelector: userDescription });
+const userInfo = new UserInfo({ userNameSelector: '.profile__name', userDescriptionSelector: '.profile__description' });
 
 const popupForUserInfo = new PopupWithForm({
-  popupSelector: popupFormUser,
+  popupSelector: '.popup_type_form-user',
   handleFormSubmit: (item) => {
     userInfo.setUserInfo(item);
   }
@@ -71,7 +65,7 @@ buttonEdit.addEventListener('click', () => {
 popupForUserInfo.setEventListeners();
 
 const popupForCard = new PopupWithForm({
-  popupSelector: popupAddPhoto,
+  popupSelector: '.popup_type_form-photo',
   handleFormSubmit: (item) => {
     cardsSection.addItem(renderPlace(item));
   }
