@@ -5,19 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="body">
   <div class="page">
     <header class="header">
-      <img src="./images/logo.svg" alt="логотип, место" class="header__logo">
+      <img src="<%=require('./images/logo.svg')%>" alt="логотип, место" class="header__logo">
     </header>
 
     <main class="main">
       <section class="profile">
         <div class="profile__card">
-          <img src="./images/avatar.jpg" alt="фотография пользователя" class="profile__avatar">
+          <img src="<%=require('./images/avatar.jpg')%>" alt="фотография пользователя" class="profile__avatar">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button type="button" class="profile__button-edit"></button>
@@ -81,17 +80,7 @@
       </li>
     </template>
   </div>
-  <script type="module" src="./components/Card.js"></script>
-  <script type="module" src="./components/FormValidator.js"></script>
-  <script type="module" src="./components/Section.js"></script>
-  <script type="module" src="./components/Popup.js"></script>
-  <script type="module" src="./components/PopupWithImage.js"></script>
-  <script type="module" src="./components/PopupWithForm.js"></script>
-  <script type="module" src="./components/UserInfo.js"></script>
-  <script type="module" src="./utils/constants.js"></script>
-  <script type="module" src="./utils/formValidatorObject.js"></script>
-  <script type="module" src="./utils/InitialCards.js"></script>
-  <script type="module" src="./pages/index.js"></script>
+
 </body>
 
 </html>
