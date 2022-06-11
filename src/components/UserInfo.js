@@ -1,18 +1,19 @@
-export default class UserInfo {
-  constructor({ userNameSelector, userDescriptionSelector }) {
-    this._userName = document.querySelector(userNameSelector);
-    this._userDescription = document.querySelector(userDescriptionSelector);
-  }
+import { userName, userDescription, profileAvatar } from '../utils/constants.js';
 
+export default class UserInfo {
   getUserInfo() {
     return {
-      name: this._userName.textContent,
-      description: this._userDescription.textContent
+      name: userName.textContent,
+      description: userDescription.textContent
     }
   }
 
-  setUserInfo(item) {
-    this._userName.textContent = item.name;
-    this._userDescription.textContent = item.description;
+  setUserInfo(data) {
+    userName.textContent = data.name;
+    userDescription.textContent = data.about;
+  }
+
+  changeAvatar(link) {
+    profileAvatar.src = link;
   }
 }

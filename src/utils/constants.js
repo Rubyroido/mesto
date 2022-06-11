@@ -3,6 +3,8 @@ export const buttonEdit = profile.querySelector('.profile__button-edit');
 export const userName = profile.querySelector('.profile__name');
 export const userDescription = profile.querySelector('.profile__description');
 export const buttonAdd = profile.querySelector('.profile__button-add');
+export const profileAvatar = profile.querySelector('.profile__avatar');
+export const buttonAvatarChange = profile.querySelector('.profile__avatar-change')
 
 export const popupFormUser = document.querySelector('.popup_type_form-user');
 export const formUser = popupFormUser.querySelector('[name="popup-form"]');
@@ -27,3 +29,6 @@ export const popupList = document.querySelectorAll('.popup');
 export const table = document.querySelector('.table');
 
 export const placeTemplate = document.querySelector('#place-template');
+
+export const popupChangeAvatar = document.querySelector('.popup_type_avatar');
+export const formChangeAvatar = document.querySelector('[name="popup-change-avatar"]');

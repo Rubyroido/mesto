@@ -16,7 +16,10 @@
     <main class="main">
       <section class="profile">
         <div class="profile__card">
-          <img src="<%=require('./images/avatar.jpg')%>" alt="фотография пользователя" class="profile__avatar">
+          <div class="profile__avatar-container">
+            <button type="button" class="profile__avatar-change"></button>
+            <img src="<%=require('./images/avatar.jpg')%>" alt="фотография пользователя" class="profile__avatar">
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button type="button" class="profile__button-edit"></button>
@@ -53,7 +56,8 @@
       <form name="popup-add-photo" class="popup__container" novalidate>
         <h2 class="popup__container-name">Новое место</h2>
         <button type="reset" class="popup__button-close popup__button-close_type-photo-add"></button>
-        <input id="photo-name" type="text" name="name" class="popup__field" placeholder="Название" required minlength="2" maxlength="30">
+        <input id="photo-name" type="text" name="name" class="popup__field" placeholder="Название" required
+          minlength="2" maxlength="30">
         <span id="photo-name-error" class="popup__error"></span>
         <input id="photo-url" type="url" name="link" class="popup__field" placeholder="Ссылка на картинку" required>
         <span id="photo-url-error" class="popup__error"></span>
@@ -69,12 +73,33 @@
       </div>
     </div>
 
+    <div class="popup popup_type_delete">
+      <form class="popup__container" novalidate>
+        <h2 class="popup__delete-container-name">Вы уверены?</h2>
+        <button type="submit" class="popup__button-save">Да</button>
+        <button class="popup__button-close"></button>
+      </form>
+    </div>
+
+    <div class="popup popup_type_avatar">
+      <form name="popup-change-avatar" class="popup__container" novalidate>
+        <h2 class="popup__avatar-container-name">Обновить аватар</h2>
+        <button type="reset" class="popup__button-close"></button>
+        <input id="photo-url" type="url" name="link" class="popup__field" placeholder="Ссылка на картинку" required>
+        <span id="photo-url-error" class="popup__error"></span>
+        <button type="submit" class="popup__button-save">Сохранить</button>
+      </form>
+    </div>
+
     <template id="place-template">
       <li class="table__cell">
         <img src="#" alt="фотография" class="table__photo">
         <div class="table__photo-description">
           <h2 class="table__photo-name"></h2>
-          <button type="button" class="table__button-like"></button>
+          <div class="table__like-container">
+            <button type="button" class="table__button-like"></button>
+            <p class="table__like-counter">0</p>
+          </div>
         </div>
         <button type="button" class="table__button-delete"></button>
       </li>
