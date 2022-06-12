@@ -1,7 +1,7 @@
 // Токен: c420f8b9-4e35-438e-95eb-ba272c384828
 // Идентификатор группы: cohort-42
 const handleResponse = (res) => {
-  if(res.ok) {
+  if (res.ok) {
     return res.json();
   }
   return Promise.reject(`Что-то пошло не так: ${res.status}`);
@@ -17,14 +17,14 @@ export default class Api {
     return fetch(`${this.url}users/me`, {
       headers: this.headers
     })
-    .then(handleResponse);
+      .then(handleResponse);
   }
 
   getInitialCards() {
     return fetch(`${this.url}cards`, {
       headers: this.headers
     })
-    .then(handleResponse);
+      .then(handleResponse);
   }
 
   updateProfile(item) {
@@ -36,7 +36,7 @@ export default class Api {
         about: item.description
       })
     })
-    .then(handleResponse);
+      .then(handleResponse);
   }
 
   createNewCard(card) {
@@ -48,7 +48,7 @@ export default class Api {
         link: card.link
       })
     })
-    .then(handleResponse);
+      .then(handleResponse);
   }
 
   deleteCard(id) {
@@ -56,7 +56,7 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers
     })
-    .then(handleResponse);
+      .then(handleResponse);
   }
 
   like(id) {
@@ -64,7 +64,7 @@ export default class Api {
       method: 'PUT',
       headers: this.headers
     })
-    .then(handleResponse);
+      .then(handleResponse);
   }
 
   deleteLike(id) {
@@ -72,16 +72,16 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers
     })
-    .then(handleResponse);
+      .then(handleResponse);
   }
 
   updateAvatar(avatar) {
     return fetch(`${this.url}users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
-      body: JSON.stringify({avatar})
+      body: JSON.stringify({ avatar })
     })
-    .then(handleResponse);
+      .then(handleResponse);
   }
 }
 

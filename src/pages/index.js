@@ -56,30 +56,19 @@ function handleCardClick(name, link) {
 }
 
 function handleLike(id) {
-  api.like(id)
+  return api.like(id)
 };
 
 function handleDeleteLike(id) {
-  api.deleteLike(id)
+  return api.deleteLike(id)
 };
-
-function handleLikeClick(card, data) {
-  const promise = card.isLiked() ? api.dislikeCard(data._id) : api.likeCard(data._id);
-  promise
-      .then((data) => {
-          card.setLike(data);
-      })
-      .catch((err) => {
-          console.log(`${err}`);
-      });
-}
 
 const popupDeleteSubmit = new PopupWithSubmit('.popup_type_delete');
 
 popupDeleteSubmit.setEventListeners();
 
 function renderPlace(data) {
-  const card = new Card(data, '#place-template', handleCardClick, userId, handleLike, handleDeleteLike, handleLikeClick, handleDeleteLike, () => {
+  const card = new Card(data, '#place-template', handleCardClick, userId, handleLike, handleDeleteLike, handleDeleteLike,() => {
     popupDeleteSubmit.open();
     popupDeleteSubmit.submitHandle(() => {
       api.deleteCard(data._id)

@@ -7,7 +7,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._userId = userId;
     this._ownerId = data.owner._id;
-    this._likes = data.likes;
+    // this._likes = data.likes;
     this._cardId = data._id;
     this._handleLike = handleLike;
     this._handleDeleteLike = handleDeleteLike;
@@ -32,15 +32,21 @@ export default class Card {
     this._element.querySelector('.table__button-like').classList.remove('button-like_active');
   }
 
-  handleLikeChange() {
+  handleLikeChange(evt) {
     if (
-      this._likes.some((item) => {
-      item._id === this._userId
-    })) {
+      // проверку по данным из запросов установить не удалось
+      // срабатывала только else часть условной конструкции,
+      // а массив лайков обновлялся только при перезагрузке страницы
+      // наставник сказал, что массив лайков должен перезаписываться, но у меня перезаписывание через likeCounter не работает
+
+      // this._likes.some((item) => {
+      // item._id === this._userId })
+      evt.target.classList.contains('button-like_active')
+    ) {
       this._handleDeleteLike(this._cardId)
         .then((data) => {
           this.likeCounter(data);
-          this.deleteLike()
+          this.deleteLike();
         })
         .catch((err) => {
           console.log(err);
@@ -49,7 +55,7 @@ export default class Card {
       this._handleLike(this._cardId)
         .then((data) => {
           this.likeCounter(data);
-          this.like()
+          this.like();
         })
         .catch((err) => {
           console.log(err);
@@ -65,12 +71,11 @@ export default class Card {
     this._element.querySelector('.table__photo').addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });
-    this._element.querySelector('.table__button-like').addEventListener('click', () => {
-      this.handleLikeChange();
+    this._element.querySelector('.table__button-like').addEventListener('click', (evt) => {
+      this.handleLikeChange(evt);
     });
     this._element.querySelector('.table__button-delete').addEventListener('click', () => {
       this._handleDeleteClick(this._cardId);
-
     });
   }
 
@@ -85,7 +90,7 @@ export default class Card {
       this._element.querySelector('.table__button-delete').remove();
     }
 
-    if (this._likes.some((item) => {
+    if (this._data.likes.some((item) => {
       item._id === this._userId
     })) {
       this.like();
