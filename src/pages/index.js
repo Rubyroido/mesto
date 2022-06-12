@@ -11,7 +11,10 @@ import {
   formChangeAvatar,
   popupFormUser,
   popupAddPhoto,
-  popupChangeAvatar
+  popupChangeAvatar,
+  userName,
+  userDescription,
+  profileAvatar
 } from '../utils/constants.js';
 
 import formValidatorObject from '../utils/formValidatorObject.js';
@@ -25,6 +28,8 @@ import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
+
+
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-42/',
   headers: {
@@ -33,20 +38,9 @@ const api = new Api({
   }
 });
 
-const userInfo = new UserInfo();
+const userInfo = new UserInfo(userName, userDescription, profileAvatar);
 
 let userId;
-
-api.getUserInfo()
-  .then((data) => {
-    userInfo.setUserInfo(data);
-    userInfo.changeAvatar(data.avatar);
-    userId = data._id;
-  })
-  .catch((err) => {
-    console.log(err)
-  });
-;
 
 const popupWithPhoto = new PopupWithImage('.popup_type_photo');
 popupWithPhoto.setEventListeners();
@@ -68,7 +62,7 @@ const popupDeleteSubmit = new PopupWithSubmit('.popup_type_delete');
 popupDeleteSubmit.setEventListeners();
 
 function renderPlace(data) {
-  const card = new Card(data, '#place-template', handleCardClick, userId, handleLike, handleDeleteLike, handleDeleteLike,() => {
+  const card = new Card(data, '#place-template', handleCardClick, userId, handleLike, handleDeleteLike,() => {
     popupDeleteSubmit.open();
     popupDeleteSubmit.submitHandle(() => {
       api.deleteCard(data._id)
@@ -88,13 +82,6 @@ const cardsSection = new Section({
     cardsSection.addItem(renderPlace(item))
   }
 }, '.table');
-
-api.getInitialCards()
-  .then((items) => {
-    cardsSection.renderItems(items);
-  })
-  .catch((err) => { console.log(err) })
-;
 
 const formUserValidator = new FormValidator(formValidatorObject, formUser);
 const formAddPhotoValidator = new FormValidator(formValidatorObject, formAddPhoto);
@@ -191,3 +178,13 @@ buttonAdd.addEventListener('click', () => {
 
 popupForCard.setEventListeners();
 
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([data, items]) => {
+    userInfo.setUserInfo(data);
+    userInfo.changeAvatar(data.avatar);
+    userId = data._id;
+    cardsSection.renderItems(items);
+  })
+  .catch((err) => {
+    (console.log(err));
+});

@@ -1,30 +1,30 @@
 // Токен: c420f8b9-4e35-438e-95eb-ba272c384828
 // Идентификатор группы: cohort-42
-const handleResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Что-то пошло не так: ${res.status}`);
-}
-
 export default class Api {
   constructor(options) {
     this.url = options.url;
     this.headers = options.headers;
   }
 
+  handleResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Что-то пошло не так: ${res.status}`);
+  }
+
   getUserInfo() {
     return fetch(`${this.url}users/me`, {
       headers: this.headers
     })
-      .then(handleResponse);
+      .then(this.handleResponse);
   }
 
   getInitialCards() {
     return fetch(`${this.url}cards`, {
       headers: this.headers
     })
-      .then(handleResponse);
+      .then(this.handleResponse);
   }
 
   updateProfile(item) {
@@ -36,7 +36,7 @@ export default class Api {
         about: item.description
       })
     })
-      .then(handleResponse);
+      .then(this.handleResponse);
   }
 
   createNewCard(card) {
@@ -48,7 +48,7 @@ export default class Api {
         link: card.link
       })
     })
-      .then(handleResponse);
+      .then(this.handleResponse);
   }
 
   deleteCard(id) {
@@ -56,7 +56,7 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers
     })
-      .then(handleResponse);
+      .then(this.handleResponse);
   }
 
   like(id) {
@@ -64,7 +64,7 @@ export default class Api {
       method: 'PUT',
       headers: this.headers
     })
-      .then(handleResponse);
+      .then(this.handleResponse);
   }
 
   deleteLike(id) {
@@ -72,7 +72,7 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers
     })
-      .then(handleResponse);
+      .then(this.handleResponse);
   }
 
   updateAvatar(avatar) {
@@ -81,7 +81,7 @@ export default class Api {
       headers: this.headers,
       body: JSON.stringify({ avatar })
     })
-      .then(handleResponse);
+      .then(this.handleResponse);
   }
 }
 
