@@ -45,9 +45,10 @@ export default class Card {
     this._likeButton.classList.remove('button-like_active');
   }
 
-  handleLikeChange(evt) {
+  handleLikeChange() {
     if (
-      evt.target.classList.contains('button-like_active')
+      // evt.target.classList.contains('button-like_active')
+      this._likes.some(user => user._id === this._userId)
     ) {
       this._handleDeleteLike(this._cardId)
         .then((data) => {
@@ -95,7 +96,10 @@ export default class Card {
       this._deleteButton.remove();
     }
 
-    if (this._likes.find((item) => (item._id === this._userId))) {
+    if (
+      // this._likes.find((item) => (item._id === this._userId))
+      this._likes.some(user => user._id === this._userId)
+      ) {
       this.like();
     }
 
