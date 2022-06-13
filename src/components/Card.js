@@ -28,6 +28,15 @@ export default class Card {
     this._element.querySelector('.table__like-counter').textContent = this._likes.length;
   }
 
+  asd() {
+    if (this._likes.some((item) => {
+      item._id === this._userId
+    })) {
+      this.like();
+    }
+  }
+
+
   like() {
     this._likeButton.classList.add('button-like_active');
   }
@@ -38,8 +47,6 @@ export default class Card {
 
   handleLikeChange(evt) {
     if (
-      // this._likes.some((item) => {
-      // item._id === this._userId })
       evt.target.classList.contains('button-like_active')
     ) {
       this._handleDeleteLike(this._cardId)
@@ -88,9 +95,7 @@ export default class Card {
       this._deleteButton.remove();
     }
 
-    if (this._data.likes.some((item) => {
-      item._id === this._userId
-    })) {
+    if (this._likes.find((item) => (item._id === this._userId))) {
       this.like();
     }
 

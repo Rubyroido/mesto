@@ -28,8 +28,6 @@ import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
-
-
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-42/',
   headers: {
